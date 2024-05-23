@@ -1,0 +1,41 @@
+{% extends 'base.html'%} {% block content %}
+
+
+
+<div class="container">
+    <h2>Добавить заявку</h2>
+    <form  method="post"
+    action="{% url 'addstatement' %}">
+        <fieldset>
+            {% csrf_token %} {% for field in form %}
+        <div class="mb-3" >
+            {{ field.label_tag }} {{ field }} {% if field.errors %}
+
+            <div class="text-danger">
+                {% for error in field.errors %}
+                <div>{{error}}</div>
+                {% endfor %}
+              </div>
+              {% endif %}
+        </div>
+        {% endfor %} {% if form.errors %}
+        <div class="text-danger">
+            {% for error in field.errors %}
+            <div>{{error}}</div>
+            {% endfor %}
+          </div>
+          {% endif %}
+       
+        <button type="submit" class="btn btn-primary">Добавить</button></fieldset>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

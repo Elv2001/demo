@@ -1,0 +1,38 @@
+  {% extends 'base.html'%} {% block content %}
+
+
+
+<div class="container ">
+          <h2>Мои заявления</h2> 
+      <a  href="{% url 'addstatement' %}"><button type="submit" class="btn btn-success g-4">Добавить заявление</button></a>
+        
+    <div class="row row-cols-1 row-cols-md-2  row-cols-xl-3 g-4">{% for statement in statements %}
+            <div class="col">
+            
+              <div class="card " >
+                <div class="card-body" >
+                <h5 class="card-title">Заявка №{{ statement.pk }}</h5>
+                <p class="card-text "><b>Государственный регистрационный номер:</b><br>{{ statement.number }}</p>
+
+                <p class="card-text"><b>Описание:</b><br>{{ statement.description  }}</p>
+
+                <p class="card-text"><b>Статус:</b><br>{{ statement.get_status_display   }}</p>
+
+                <p class="card-text"><b>Время:</b><br>{{ statement.date_time  }}</p>
+               </div>                        
+              </div>
+         
+        </div> 
+        {% endfor %}
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+  {% endblock %}
